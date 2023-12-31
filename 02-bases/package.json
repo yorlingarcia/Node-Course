@@ -9,5 +9,8 @@
     "start:dev": "echo 'hola mundo desde dev'"
   },
   "author": "Yorlin Garcia",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }
