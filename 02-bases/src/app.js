@@ -1,5 +1,5 @@
 // require("./js-foundation/01-template");
 
 const exportTemplate = require("./js-foundation/01-template");
-
-console.log(exportTemplate.emailTemplate);
+require("./js-foundation/02-desestructuracion");
+// console.log(exportTemplate.emailTemplate);
