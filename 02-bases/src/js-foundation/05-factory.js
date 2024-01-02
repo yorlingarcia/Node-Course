@@ -1,11 +1,14 @@
+const { getAge, getUuId } = require("../plugin/index");
+
+console.log(getAge);
 const obj = { name: "john Doe", birthdate: "1985-10-21" };
 
 const buildPerson = ({ name, birthdate }) => {
   return {
-    id: new Date().getTime(),
+    id: getUuId(),
     name: name,
     birthdate: birthdate,
-    age: new Date().getFullYear() - new Date(birthdate).getFullYear(),
+    age: getAge(birthdate),
   };
 };
 
