@@ -4,15 +4,16 @@
 // require("./js-foundation/02-desestructuracion");
 // require("./js-foundation/03-callbacks");
 // const { getUserById } = require("./js-foundation/03-callbacks");
-const { getUserById } = require("./js-foundation/04-arrow");
+// const { getUserById } = require("./js-foundation/04-arrow");
+require("./js-foundation/05-factory");
 
-const id = 1;
+// const id = 1;
 
-getUserById(id, (err, user) => {
-  if (err) {
-    throw new Error(err);
-  }
-  console.log(user);
-});
+// getUserById(id, (err, user) => {
+//   if (err) {
+//     throw new Error(err);
+//   }
+//   console.log(user);
+// });
 
 // console.log(exportTemplate.emailTemplate);
