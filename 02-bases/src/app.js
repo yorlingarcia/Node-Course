@@ -5,15 +5,13 @@
 // require("./js-foundation/03-callbacks");
 // const { getUserById } = require("./js-foundation/03-callbacks");
 // const { getUserById } = require("./js-foundation/04-arrow");
-require("./js-foundation/05-factory");
 
-// const id = 1;
+const { getAge, getUuId } = require("./plugins/index");
 
-// getUserById(id, (err, user) => {
-//   if (err) {
-//     throw new Error(err);
-//   }
-//   console.log(user);
-// });
+const { buildMakePerson } = require("./js-foundation/05-factory");
 
-// console.log(exportTemplate.emailTemplate);
+const makePerson = buildMakePerson({ getUuId, getAge });
+
+const obj = { name: "john Doe", birthdate: "1985-10-21" };
+const john = makePerson(obj);
+console.log(john);
