@@ -7,9 +7,10 @@
 // const { getUserById } = require("./js-foundation/04-arrow");
 const getPokemonId = require("./js-foundation/06-promises");
 
-getPokemonId(4, (pokemon) => {
-  console.log({ pokemon });
-});
+getPokemonId(4)
+  .then((pokemon) => console.log({ pokemon }))
+  .catch((err) => console.log({ err }))
+  .finally(() => console.log("Proceso terminado"));
 
 // ! reference a factory function
 // const { getAge, getUuId } = require("./plugins/index");
