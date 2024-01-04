@@ -1,0 +1,4 @@
+{"level":"info","message":"Hola mundo","service":"user-service"}
+{"level":"info","message":"Hola mundo"}
+{"level":"info","message":"Hola mundo"}
+{"level":"info","message":"Hola mundo","service":"app,js"}
