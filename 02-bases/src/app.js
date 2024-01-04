@@ -12,6 +12,15 @@ getPokemonId(4)
   .catch((err) => console.log({ err }))
   .finally(() => console.log("Proceso terminado"));
 
+// const axios = require("axios");
+// axios
+//   .get(`https://pokeapi.co/api/v2/pokemon/${1}`)
+//   .then(({ data }) => console.log({ name: data.name }))
+//   .catch((error) => console.log(error))
+//   .finally(() => console.log("Proceso terminado 2"));
+
+// console.log(axios.isCancel("something"));
+
 // ! reference a factory function
 // const { getAge, getUuId } = require("./plugins/index");
 
