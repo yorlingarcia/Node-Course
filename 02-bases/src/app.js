@@ -5,13 +5,19 @@
 // require("./js-foundation/03-callbacks");
 // const { getUserById } = require("./js-foundation/03-callbacks");
 // const { getUserById } = require("./js-foundation/04-arrow");
+const getPokemonId = require("./js-foundation/06-promises");
 
-const { getAge, getUuId } = require("./plugins/index");
+getPokemonId(4, (pokemon) => {
+  console.log({ pokemon });
+});
 
-const { buildMakePerson } = require("./js-foundation/05-factory");
+// ! reference a factory function
+// const { getAge, getUuId } = require("./plugins/index");
 
-const makePerson = buildMakePerson({ getUuId, getAge });
+// const { buildMakePerson } = require("./js-foundation/05-factory");
 
-const obj = { name: "john Doe", birthdate: "1985-10-21" };
-const john = makePerson(obj);
-console.log(john);
+// const makePerson = buildMakePerson({ getUuId, getAge });
+
+// const obj = { name: "john Doe", birthdate: "1985-10-21" };
+// const john = makePerson(obj);
+// console.log(john);
