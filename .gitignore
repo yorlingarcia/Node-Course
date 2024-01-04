@@ -1,4 +1,7 @@
 /02-bases/node_modules
+/03-typeScript/node_modules
+/03-typeScript/dist
 /node_modules
+/dist
 
 *.log
