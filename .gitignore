@@ -3,9 +3,9 @@
 /02-bases/coverage
 /03-typeScript/node_modules
 /03-typeScript/dist
-/node_modules
-/dist
-/coverage
+node_modules/
+dist/
+coverage/
 
 *.log
 /02-bases/*.log

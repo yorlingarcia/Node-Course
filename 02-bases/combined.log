@@ -36,3 +36,5 @@
 {"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:43:21.311Z"}
 {"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-05T00:02:51.106Z"}
 {"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-05T00:02:51.128Z"}
+{"level":"info","message":"test message","service":"test service","timestamp":"2024-01-05T20:30:50.659Z"}
+{"level":"info","message":"test message","service":"test service","timestamp":"2024-01-05T20:42:44.377Z"}
