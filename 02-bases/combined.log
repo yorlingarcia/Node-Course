@@ -8,3 +8,29 @@
 {"at":"2024-01-04T19:26:03.337Z","level":"error","message":"error Esto es algo malo","service":"app,js","timestamp":"2024-01-04T19:26:03.340Z"}
 {"level":"info","message":"Hola mundo","service":"app,js","timestamp":"2024-01-04T19:26:07.534Z"}
 {"level":"error","message":"error Esto es algo malo","service":"app,js","timestamp":"2024-01-04T19:26:07.552Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:12:09.299Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:12:09.308Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:16:42.677Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:16:42.758Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:18:20.691Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:18:20.859Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:19:52.567Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:19:52.604Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:22:54.079Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:22:54.144Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:23:43.304Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:23:43.338Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:29:18.443Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:29:18.472Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:31:58.866Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:31:58.876Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:35:08.155Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:35:08.178Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:36:21.655Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:36:21.685Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:37:40.145Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:37:40.235Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:40:26.821Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:40:26.833Z"}
+{"level":"info","message":"Hola mundo","service":"app.ts","timestamp":"2024-01-04T21:43:21.301Z"}
+{"level":"error","message":"error Esto es algo malo","service":"app.ts","timestamp":"2024-01-04T21:43:21.311Z"}
