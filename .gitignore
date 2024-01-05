@@ -1,9 +1,11 @@
 /02-bases/node_modules
 /02-bases/dist
+/02-bases/coverage
 /03-typeScript/node_modules
 /03-typeScript/dist
 /node_modules
 /dist
+/coverage
 
 *.log
 /02-bases/*.log
