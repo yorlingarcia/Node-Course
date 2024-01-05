@@ -4,6 +4,6 @@
 
 // console.log(SHELL);
 
-const characters: string[] = ["Flash", "Superman", "Batman"];
+export const characters: string[] = ["Flash", "Superman", "Batman"];
 
 const [, , bataman] = characters;

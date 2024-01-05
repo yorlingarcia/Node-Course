@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1704416125858" clover="3.2.0">
-  <project timestamp="1704416125858" name="All files">
-    <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="7" coveredelements="7" complexity="0" loc="7" ncloc="7" packages="1" files="1" classes="1"/>
-    <file name="01-template.ts" path="C:\Users\Yorlin García\Documents\Courses\Node\02-bases\src\js-foundation\01-template.ts">
-      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+<coverage generated="1704418682373" clover="3.2.0">
+  <project timestamp="1704418682373" name="All files">
+    <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="9" coveredelements="9" complexity="0" loc="9" ncloc="9" packages="1" files="1" classes="1"/>
+    <file name="02-desestructuracion.ts" path="C:\Users\Yorlin García\Documents\Courses\Node\02-bases\src\js-foundation\02-desestructuracion.ts">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
@@ -11,6 +11,8 @@
       <line num="5" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
       <line num="7" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
