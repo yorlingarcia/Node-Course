@@ -1,8 +1,15 @@
 /02-bases/node_modules
 /02-bases/dist
 /02-bases/coverage
+
 /03-typeScript/node_modules
 /03-typeScript/dist
+
+/04-multiplication/node_modules
+/04-multiplication/dist
+/04-multiplication/coverage
+
+
 node_modules/
 dist/
 coverage/
