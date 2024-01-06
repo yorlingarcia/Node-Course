@@ -8,6 +8,7 @@
 /04-multiplication/node_modules
 /04-multiplication/dist
 /04-multiplication/coverage
+/04-multiplication/outputs/*.txt
 
 
 node_modules/
