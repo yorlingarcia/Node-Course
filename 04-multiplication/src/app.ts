@@ -1,3 +1,9 @@
 import { yarg } from "./config/plugins/yargs.olugin";
 
-console.log(yarg.b);
+(async () => {
+    await main()
+})()
+
+async function main() {
+    console.log('ejecutado');
+}
