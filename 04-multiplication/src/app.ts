@@ -5,6 +5,6 @@ import { yarg } from "./config/plugins/yargs.olugin";
 })()
 
 async function main() {
-    console.log(yarg);
-    
+    console.log(yarg);   
 }
+
