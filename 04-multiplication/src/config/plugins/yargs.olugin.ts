@@ -20,4 +20,8 @@ export const yarg = yargs(process.argv)
     default: false,
     describe: 'show multplication table'
 })
+.check( (argv, options) => {
+    if (argv.b < 1) throw 'Error: Base must be greater than 0'
+    return true;
+})
 .parseSync()
