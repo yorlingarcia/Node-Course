@@ -21,7 +21,7 @@ export class SaveFile implements SavefileUseCase {
             fs.writeFileSync(`${fileDestination}/${fileName}.txt`, fileContent);
             return true
         } catch (error) {
-            console.error('Error en la creacion del archivo: ', error)
+            // console.error('Error en la creacion del archivo: ', error) //todo Hacer en winston
             return false
         }
     }
