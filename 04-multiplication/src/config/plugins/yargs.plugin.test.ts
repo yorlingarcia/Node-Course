@@ -32,13 +32,13 @@ describe('test yargs.plugin.ts', () => {
 
 
     test('should return configuration with custom values', async () => {
-        const argv = await runCommand(['-b', '5', '-l', '5', '-s', 'true', '-n', 'table', '-d', 'outputs/table'])
+        const argv = await runCommand(['-b', '5', '-l', '5', '-s', 'true', '-n', 'custom-name', '-d', 'custom-dir'])
         expect(argv).toEqual(expect.objectContaining( {
             b: 5,
             l: 5,
             s: true,
-            n: 'table',  
-            d: 'outputs/table',
+            n: 'custom-name',  
+            d: 'custom-dir',
         }))
 
         
