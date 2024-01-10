@@ -1,17 +1,19 @@
-import { SaveFile } from '../domain/use-cases/save-file.use-case'
+import { SaveFile, SaveFileOptions } from '../domain/use-cases/save-file.use-case'
 import { Createtable } from "../domain/use-cases/create-table.use-case";
 
-interface RunOptions {
+interface RunOptions  {
     base: number;
     limit: number;
-    showTable: boolean
+    showTable: boolean;
+    fileName: string;
+    fileDestination: string
 }
 
 export class ServerApp {
-    static run({base, limit, showTable}: RunOptions) {
+    static run({base, limit, showTable, fileName, fileDestination}: RunOptions) {
         console.log('Server running...');
         const table = new Createtable().execute({base, limit})
-        const wasCreated = new SaveFile().execute({fileContent: table, fileDestination: `outputs/table-${base}`})
+        const wasCreated = new SaveFile().execute({fileContent: table, fileDestination, fileName})
         if(showTable) console.log(table);
         (wasCreated) ? console.log('Archivo creado'): console.log('Archivo no creado');
         ;   
