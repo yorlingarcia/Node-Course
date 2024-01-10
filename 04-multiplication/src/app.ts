@@ -1,4 +1,4 @@
-import { yarg } from "./config/plugins/yargs.olugin";
+import { yarg } from "./config/plugins/yargs.plugin";
 import { ServerApp } from "./presentation/server-app";
 
 (async () => {

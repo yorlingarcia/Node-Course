@@ -1,5 +1,5 @@
 import fs from "fs";
-import { yarg } from "./config/plugins/yargs.olugin";
+import { yarg } from "./config/plugins/yargs.plugin";
 
 const {b:base, l:limit, s:showTable} = yarg
 
