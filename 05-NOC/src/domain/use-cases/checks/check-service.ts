@@ -9,13 +9,12 @@ export class CheckService implements CheckServiceUseCase {
       if (!req) {
         throw new Error(`Error on check service ${url}`);
       }
+      console.log(`${url} is ok`);
+
       return true;
     } catch (error) {
       console.log(`${error}`);
-
       return false;
     }
-
-    return true;
   }
 }
