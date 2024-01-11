@@ -1,20 +1,18 @@
-import { CronJob } from "cron";
-
+import { CronService } from "./cron/cron-service";
 
 
 export class Server {
 
     public static start() {
         console.log('Server started...');
-        
-        const job = new CronJob(
-            '*/3 * * * * *',
+        CronService.createJob(
+            '*/5 * * * * *',
             () => {
-                const date = new Date();
-                console.log(date);
+                const date = new Date()
+                console.log('5 seconds', date);
                 
-            },
-        );
-        job.start()
+            }
+        )
+
     }
 }
