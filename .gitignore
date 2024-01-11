@@ -16,6 +16,8 @@
 /05-NOC/coverage
 /05-NOC/outputs
 
+/06-json-server/node_modules
+
 
 node_modules/
 dist/
