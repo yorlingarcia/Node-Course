@@ -10,9 +10,16 @@ export class Server {
             () => {
                 const date = new Date()
                 console.log('5 seconds', date);
-                
             }
-        )
+        );
+
+        CronService.createJob(
+            '*/2 * * * * *',
+            () => {
+                const date = new Date()
+                console.log('2 seconds', date);
+            }
+        );
 
     }
 }
