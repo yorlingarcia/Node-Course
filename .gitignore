@@ -11,6 +11,12 @@
 /04-multiplication/outputs
 
 
+/05-NOC/node_modules
+/05-NOC/dist
+/05-NOC/coverage
+/05-NOC/outputs
+
+
 node_modules/
 dist/
 coverage/
