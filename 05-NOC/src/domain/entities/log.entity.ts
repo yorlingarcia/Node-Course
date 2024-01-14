@@ -14,4 +14,14 @@ export class LogEntity {
     this.level = level;
     this.createAt = new Date();
   }
+
+  static fromJson = (jsonData: string): LogEntity => {
+    const { message, level, creaatedAt } = JSON.parse(jsonData);
+
+    const log = new LogEntity(message, level);
+
+    log.createAt = new Date(creaatedAt);
+
+    return log;
+  };
 }
