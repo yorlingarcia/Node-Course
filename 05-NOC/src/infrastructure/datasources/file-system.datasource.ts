@@ -3,21 +3,25 @@ import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 
 import fs from "fs";
 
-export class FileSystme implements LogDataSource {
+export class FileSystemDataSource implements LogDataSource {
   private readonly logPath = "logs/";
   private readonly allLogsPath = "logs/logs-all.log";
   private readonly mediumLogsPath = "logs/logs-medium.log";
   private readonly highLogsPath = "logs/logs-high.log";
 
-  constructor() {}
+  constructor() {
+    this.createLogsFiles();
+  }
 
   private createLogsFiles = () => {
     if (!fs.existsSync(this.logPath)) {
       fs.mkdirSync(this.logPath);
     }
-    [this.allLogsPath, this.mediumLogsPath, this.mediumLogsPath].forEach(
+
+    [this.allLogsPath, this.mediumLogsPath, this.highLogsPath].forEach(
       (path) => {
         if (fs.existsSync(path)) return;
+
         fs.writeFileSync(path, "");
       }
     );
@@ -26,7 +30,10 @@ export class FileSystme implements LogDataSource {
   async saveLog(newLog: LogEntity): Promise<void> {
     const logAsJson = `${JSON.stringify(newLog)}\n`;
 
+    fs.appendFileSync(this.allLogsPath, logAsJson);
+
     if (newLog.level === LogSeverityLevel.low) return;
+
     if (newLog.level === LogSeverityLevel.medium) {
       fs.appendFileSync(this.mediumLogsPath, logAsJson);
     } else {
@@ -37,13 +44,14 @@ export class FileSystme implements LogDataSource {
   private getLogsFromFile = (path: string): LogEntity[] => {
     const content = fs.readFileSync(path, "utf-8");
     const logs = content.split("\n").map(LogEntity.fromJson);
-    // const stringLogs = content
-    //     .split("\n")
-    //     .map((log) => LogEntity.fromJson(log));
+    // const logs = content.split('\n').map(
+    //   log => LogEntity.fromJson(log)
+    // );
+
     return logs;
   };
 
-  async getLog(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {
+  async getLogs(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {
     switch (severityLevel) {
       case LogSeverityLevel.low:
         return this.getLogsFromFile(this.allLogsPath);
