@@ -5,3 +5,15 @@ Creacion de proyecto de consola para implementar arquitectura y patrones de dise
 # correr programa
 
 npm run dev
+
+# dev
+
+1. clonar el archivo .en.te,plate a .env
+2. configurar las variables de entorno
+
+```
+MAILER_EMAIL =
+MAILER_SECRET_KEY =
+PORT = 3000
+PROD = false
+```
