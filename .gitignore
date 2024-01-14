@@ -1,6 +1,7 @@
 /02-bases/node_modules
 /02-bases/dist
 /02-bases/coverage
+/02-bases/*.log
 
 /03-typeScript/node_modules
 /03-typeScript/dist
@@ -16,14 +17,14 @@
 /05-NOC/coverage
 /05-NOC/outputs
 /05-NOC/logs
+/05-NOC/.env
 /05-NOC/*.log
 
 /06-json-server/node_modules
 
-
+logs/
 node_modules/
 dist/
 coverage/
-
 *.log
-/02-bases/*.log
+.env
