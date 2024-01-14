@@ -17,3 +17,5 @@ MAILER_SECRET_KEY =
 PORT = 3000
 PROD = false
 ```
+
+3. ejecutar npm install
