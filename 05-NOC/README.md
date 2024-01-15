@@ -14,6 +14,7 @@ npm run dev
 ```
 MAILER_EMAIL =
 MAILER_SECRET_KEY =
+MAILER_SERVICE =
 PORT = 3000
 PROD = false
 ```
