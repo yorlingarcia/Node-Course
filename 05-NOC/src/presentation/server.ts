@@ -11,17 +11,18 @@ const fileSystemLogRepository = new LogRepositoryImpl(
 export class Server {
   public static start() {
     console.log("Server started...");
-    CronService.createJob("*/5 * * * * *", () => {
-      //   const date = new Date();
-      //   console.log("5 seconds", date);
-      const url = "http://google.com";
-      // const url = "http://localhost:3000";
-      new CheckService(
-        fileSystemLogRepository,
-        () => console.log(`${url} is ok`),
-        (error) => console.log(error)
-      ).execute(url);
-      //   new CheckService().execute("http://localhost:3000");
-    });
+    // ToDo: HAcer Email
+    // CronService.createJob("*/5 * * * * *", () => {
+    //     const date = new Date();
+    //     console.log("5 seconds", date);
+    //   const url = "http://google.com";
+    //   const url = "http://localhost:3000";
+    //   new CheckService(
+    //     fileSystemLogRepository,
+    //     () => console.log(`${url} is ok`),
+    //     (error) => console.log(error)
+    //   ).execute(url);
+    //     new CheckService().execute("http://localhost:3000");
+    // });
   }
 }
