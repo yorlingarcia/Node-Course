@@ -14,7 +14,11 @@ export class Server {
   public static start() {
     console.log("Server started...");
     // console.log(envs.MAILER_EMAIL, envs.MAILER_SECRET_KEY);
-    const emailService = new EmailService();
+    // const emailService = new EmailService(fileSystemLogRepository);
+    // emailService.sendEmailWithFileSystemLogs([
+    //   "yorlingarcia32@gmail.com",
+    //   "yorlingarcia96@hotmail.com",
+    // ]);
     // emailService.sendEmail({
     //   to: "yorlingarcia32@gmail.com",
     //   subject: "Logs del sistema",
@@ -24,10 +28,6 @@ export class Server {
     //   <p>Ver logs adjuntos</p>
     //   `,
     // });
-    emailService.sendEmailWithFileSystemLogs([
-      "yorlingarcia32@gmail.com",
-      "yorlingarcia96@hotmail.com",
-    ]);
 
     // ToDo: HAcer Email
     // CronService.createJob("*/5 * * * * *", () => {
