@@ -19,6 +19,7 @@
 /05-NOC/logs
 /05-NOC/.env
 /05-NOC/*.log
+/05-NOC/mongo-db
 
 /06-json-server/node_modules
 
