@@ -5,9 +5,11 @@ import { FileSystemDataSource } from "../infrastructure/datasources/file-system.
 import { LogRepositoryImpl } from "../infrastructure/repositories/log.ropository-impl";
 import { CronService } from "./cron/cron-service";
 import { EmailService } from "./email/email.service";
+import { MongoLogDataSource } from "../infrastructure/datasources/mongo-log.datasource";
 
-const fileSystemLogRepository = new LogRepositoryImpl(
-  new FileSystemDataSource()
+const logRepository = new LogRepositoryImpl(
+  //new FileSystemDataSource()
+  new MongoLogDataSource()
   // new PostgresSQLLogDataSource()
 );
 
@@ -23,5 +25,14 @@ export class Server {
     //   "yorlingarcia32@gmail.com",
     //   "yorlingarcia96@hotmail.com",
     // ]);
+
+    CronService.createJob("*/5 * * * * *", () => {
+      const url = "https://google.com";
+      new CheckService(
+        logRepository,
+        () => console.log(`${url} is ok`),
+        (error) => console.log("error desde server", error)
+      ).execute(url);
+    });
   }
 }

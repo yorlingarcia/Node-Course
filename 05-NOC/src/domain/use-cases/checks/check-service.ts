@@ -10,7 +10,7 @@ type ErrorCallback = ((error: string) => void) | undefined;
 
 export class CheckService implements CheckServiceUseCase {
   constructor(
-    private readonly logrepository: LogRepository,
+    private readonly logRepository: LogRepository,
     private readonly successCallback: SuccessCallback,
     private readonly errorCallback: ErrorCallback
   ) {}
@@ -27,7 +27,7 @@ export class CheckService implements CheckServiceUseCase {
         level: LogSeverityLevel.low,
         origin: "check-service.ts",
       });
-      this.logrepository.saveLog(log);
+      this.logRepository.saveLog(log);
       return true;
     } catch (error) {
       // console.log(`${error}`);
@@ -37,7 +37,7 @@ export class CheckService implements CheckServiceUseCase {
         level: LogSeverityLevel.high,
         origin: "check-service.ts",
       });
-      this.logrepository.saveLog(log);
+      this.logRepository.saveLog(log);
       this.errorCallback && this.errorCallback(`${errorMessage}`);
       return false;
     }

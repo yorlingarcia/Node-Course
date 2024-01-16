@@ -13,13 +13,13 @@ export interface LogEntityOptions {
 
 export class LogEntity {
   public level: LogSeverityLevel;
-  public messasge: string;
+  public message: string;
   public createAt: Date;
   public origin: string;
 
   constructor(options: LogEntityOptions) {
     const { message, level, origin, createdAt = new Date() } = options;
-    this.messasge = message;
+    this.message = message;
     this.level = level;
     this.createAt = new Date();
     this.origin = origin;
