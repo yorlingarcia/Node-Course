@@ -6,17 +6,18 @@ import { LogRepositoryImpl } from "../infrastructure/repositories/log.ropository
 import { CronService } from "./cron/cron-service";
 import { EmailService } from "./email/email.service";
 import { MongoLogDataSource } from "../infrastructure/datasources/mongo-log.datasource";
+import { LogSeverityLevel } from "../domain/entities/log.entity";
 
 const logRepository = new LogRepositoryImpl(
-  //new FileSystemDataSource()
-  new MongoLogDataSource()
+  new FileSystemDataSource()
+  // new MongoLogDataSource()
   // new PostgresSQLLogDataSource()
 );
 
 const emailService = new EmailService();
 
 export class Server {
-  public static start() {
+  public static async start() {
     console.log("Server started...");
 
     // ToDo: HAcer Email
@@ -25,14 +26,16 @@ export class Server {
     //   "yorlingarcia32@gmail.com",
     //   "yorlingarcia96@hotmail.com",
     // ]);
+    const logs = await logRepository.getLogs(LogSeverityLevel.low);
+    console.log(logs);
 
-    CronService.createJob("*/5 * * * * *", () => {
-      const url = "https://google.com";
-      new CheckService(
-        logRepository,
-        () => console.log(`${url} is ok`),
-        (error) => console.log("error desde server", error)
-      ).execute(url);
-    });
+    // CronService.createJob("*/5 * * * * *", () => {
+    //   const url = "https://google.com";
+    //   new CheckService(
+    //     logRepository,
+    //     () => console.log(`${url} is ok`),
+    //     (error) => console.log("error desde server", error)
+    //   ).execute(url);
+    // });
   }
 }
