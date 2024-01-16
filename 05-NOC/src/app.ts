@@ -23,8 +23,8 @@ async function main() {
 
   // console.log(newLog);
 
-  const logs = await LogModel.find();
-  console.log(logs);
+  // const logs = await LogModel.find();
+  // console.log(logs);
 
   // Server.start();
   //   console.log(envs);
