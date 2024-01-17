@@ -21,6 +21,8 @@
 /05-NOC/*.log
 /05-NOC/mongo-db
 /05-NOC/postgres
+/05-NOC/mongo-test
+/05-NOC/postgres-test
 
 /06-json-server/node_modules
 
