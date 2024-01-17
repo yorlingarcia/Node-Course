@@ -8,7 +8,7 @@ describe("env.plugin.ts", () => {
       MAILER_SECRET_KEY: "fpbqkcbrgnvskvff",
       MAILER_SERVICE: "gmail",
       PROD: false,
-      MOGO_URL: "mongodb://Yorlin:123456789@localhost:27017",
+      MONGO_URL: "mongodb://Yorlin:123456789@localhost:27017",
       MONGO_DB_NAME: "NOC-test",
       MONGO_USER: "Yorlin",
       MONGO_PASS: "123456789",
