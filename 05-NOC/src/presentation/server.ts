@@ -8,10 +8,19 @@ import { EmailService } from "./email/email.service";
 import { MongoLogDataSource } from "../infrastructure/datasources/mongo-log.datasource";
 import { LogSeverityLevel } from "../domain/entities/log.entity";
 import { ProstgresLogDataSource } from "../infrastructure/datasources/postgres-log.datasource";
+import { CheckServiceMultiple } from "../domain/use-cases/checks/check-service-multiple";
 
-const logRepository = new LogRepositoryImpl(
-  // new FileSystemDataSource()
-  // new MongoLogDataSource()
+// const logRepository = new LogRepositoryImpl(
+//   // new FileSystemDataSource()
+//   // new MongoLogDataSource()
+//   new ProstgresLogDataSource()
+// );
+
+const fsLogRepository = new LogRepositoryImpl(new FileSystemDataSource());
+
+const mongoLogRepository = new LogRepositoryImpl(new MongoLogDataSource());
+
+const postgresLogRepository = new LogRepositoryImpl(
   new ProstgresLogDataSource()
 );
 
@@ -30,10 +39,19 @@ export class Server {
     // const logs = await logRepository.getLogs(LogSeverityLevel.low);
     // console.log(logs);
 
+    // CronService.createJob("*/5 * * * * *", () => {
+    //   const url = "https://google.com";
+    //   new CheckService(
+    //     logRepository,
+    //     () => console.log(`${url} is ok`),
+    //     (error) => console.log("error desde server", error)
+    //   ).execute(url);
+    // });
+
     CronService.createJob("*/5 * * * * *", () => {
       const url = "https://google.com";
-      new CheckService(
-        logRepository,
+      new CheckServiceMultiple(
+        [fsLogRepository, mongoLogRepository, postgresLogRepository],
         () => console.log(`${url} is ok`),
         (error) => console.log("error desde server", error)
       ).execute(url);
