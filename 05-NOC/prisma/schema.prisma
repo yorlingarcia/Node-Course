@@ -22,4 +22,5 @@ model LogModel {
   message String
   origin String
   level SeverityLevel
+  createAt DateTime @default(now())
 }
