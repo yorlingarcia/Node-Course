@@ -48,13 +48,13 @@ export class Server {
     //   ).execute(url);
     // });
 
-    CronService.createJob("*/5 * * * * *", () => {
-      const url = "https://google.com";
-      new CheckServiceMultiple(
-        [fsLogRepository, mongoLogRepository, postgresLogRepository],
-        () => console.log(`${url} is ok`),
-        (error) => console.log("error desde server", error)
-      ).execute(url);
-    });
+    // CronService.createJob("*/5 * * * * *", () => {
+    //   const url = "https://google.com";
+    //   new CheckServiceMultiple(
+    //     [fsLogRepository, mongoLogRepository, postgresLogRepository],
+    //     () => console.log(`${url} is ok`),
+    //     (error) => console.log("error desde server", error)
+    //   ).execute(url);
+    // });
   }
 }

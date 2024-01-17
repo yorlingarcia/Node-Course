@@ -2,13 +2,9 @@
 
 Creacion de proyecto de consola para implementar arquitectura y patrones de diseño. (repository pattern => caso de uso => repositorio => base de datos)
 
-# correr programa
-
-npm run dev
-
 # dev
 
-1. clonar el archivo .en.te,plate a .env
+1. clonar el archivo .env.template a .env
 2. configurar las variables de entorno
 
 ```
@@ -25,9 +21,8 @@ POSTGRES_PASSWORD
 
 3. ejecutar npm install
 4. Levantar las bases de datos con el comando
-
-```
-docker compose up -d
-```
-
-5. ejecutra `npm run dev`
+   `docker compose up -d`
+5. ejecutar el comando
+   `npx prisma migrate dev `
+6. ejecutar
+   `npm run dev`
