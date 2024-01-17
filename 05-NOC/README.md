@@ -26,3 +26,4 @@ POSTGRES_PASSWORD
    `npx prisma migrate dev `
 6. ejecutar
    `npm run dev`
+7. para testing seguir pasos de https://import.cdn.thinkific.com/643563/courses/2405661/Configurar_Jest_con_TypeScript_en_Node-230914-091434.pdf
