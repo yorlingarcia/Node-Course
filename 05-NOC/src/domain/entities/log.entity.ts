@@ -14,14 +14,14 @@ export interface LogEntityOptions {
 export class LogEntity {
   public level: LogSeverityLevel;
   public message: string;
-  public createAt: Date;
+  public createdAt: Date;
   public origin: string;
 
   constructor(options: LogEntityOptions) {
     const { message, level, origin, createdAt = new Date() } = options;
     this.message = message;
     this.level = level;
-    this.createAt = new Date();
+    this.createdAt = new Date();
     this.origin = origin;
   }
 
@@ -36,7 +36,7 @@ export class LogEntity {
       origin,
     });
 
-    log.createAt = new Date(createdAt);
+    log.createdAt = new Date(createdAt);
 
     return log;
   };

@@ -13,18 +13,18 @@ describe("log.entity.test.ts", () => {
     expect(log.message).toBe(dataObj.message);
     expect(log.level).toBe(dataObj.level);
     expect(log.origin).toBe(dataObj.origin);
-    expect(log.createAt).toBeInstanceOf(Date);
+    expect(log.createdAt).toBeInstanceOf(Date);
   });
 
   test("should create a LogEntity instance from json", () => {
-    const json = `{"message":"Service https://google.com working","level":"low","createAt":"2024-01-17T17:11:05.865Z","origin":"check-service.ts"}`;
+    const json = `{"message":"Service https://google.com working","level":"low","createdAt":"2024-01-17T17:11:05.865Z","origin":"check-service.ts"}`;
     const log = LogEntity.fromJson(json);
 
     expect(log).toBeInstanceOf(LogEntity);
     expect(log.message).toBe("Service https://google.com working");
     expect(log.level).toBe(LogSeverityLevel.low);
     expect(log.origin).toBe("check-service.ts");
-    expect(log.createAt).toBeInstanceOf(Date);
+    expect(log.createdAt).toBeInstanceOf(Date);
   });
 
   test("Should create a LogEntity instance from object", () => {
@@ -34,6 +34,6 @@ describe("log.entity.test.ts", () => {
     expect(log.message).toBe(dataObj.message);
     expect(log.level).toBe(dataObj.level);
     expect(log.origin).toBe(dataObj.origin);
-    expect(log.createAt).toBeInstanceOf(Date);
+    expect(log.createdAt).toBeInstanceOf(Date);
   });
 });
