@@ -29,8 +29,10 @@ describe("check-service.test.ts", () => {
   });
 
   test("should call error callkback when fetch returns false", async () => {
-    const wasOk = await checkService.execute("https://google.com");
-    expect(wasOk).toBe(true);
+    const wasOk = await checkService.execute(
+      "https://gooakjsdlkajsdlkjgle.com"
+    );
+    expect(wasOk).toBe(false);
 
     expect(successCallback).not.toHaveBeenCalled();
     expect(errorCallback).toHaveBeenCalled();
