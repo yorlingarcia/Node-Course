@@ -2,10 +2,10 @@ import fs from "fs";
 import path from "path";
 import { FileSystemDataSource } from "./file-system.datasource";
 import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
+import { LogDataSource } from "../../domain/dataSources/log.datasource";
 
 describe("file-system.datasoruce.test.ts", () => {
   const logPath = path.join(__dirname, "../../../logs");
-  console.log(logPath);
 
   beforeEach(() => {
     fs.rmSync(logPath, { recursive: true, force: true });
@@ -90,5 +90,26 @@ describe("file-system.datasoruce.test.ts", () => {
     );
     expect(logsMedium).toEqual(expect.arrayContaining([logMedium]));
     expect(logsHigh).toEqual(expect.arrayContaining([logHigh]));
+  });
+
+  test("should not throw an error if path exists", () => {
+    new FileSystemDataSource();
+    new FileSystemDataSource();
+
+    expect(true).toBeTruthy();
+  });
+
+  test("should throw an erro if severity level is not defined", async () => {
+    const logDataSource = new FileSystemDataSource();
+
+    const customSeverityLevel = "SUPER_MEGA_HIGH" as LogSeverityLevel;
+
+    try {
+      await logDataSource.getLogs(customSeverityLevel);
+      expect(true).toBeFalsy();
+    } catch (error) {
+      const errorString = `${error}`;
+      expect(errorString).toContain(`${customSeverityLevel} not implemented`);
+    }
   });
 });
