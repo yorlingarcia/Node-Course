@@ -1,5 +1,10 @@
 #Rest WEb
 
+# librerias externas
+
+1. npm i dotenv env-var
+2. npm i dotenv env-var
+
 # dev
 
 1. clonar el archivo .env.template a .env

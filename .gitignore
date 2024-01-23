@@ -28,6 +28,9 @@
 
 /07-RestWeb/node_modules
 /07-RestWeb/dist
+/07-RestWeb/keys
+/07-RestWeb/.env
+
 
 logs/
 node_modules/
