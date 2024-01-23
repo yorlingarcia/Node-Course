@@ -26,6 +26,9 @@
 
 /06-json-server/node_modules
 
+/07-RestWeb/node_modules
+/07-RestWeb/dist
+
 logs/
 node_modules/
 dist/
