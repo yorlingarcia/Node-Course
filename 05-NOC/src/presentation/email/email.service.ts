@@ -2,14 +2,14 @@ import nodemailer from "nodemailer";
 import { envs } from "../../config/plugins/envs.plugin";
 import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 
-interface SendEmailOptions {
+export interface SendEmailOptions {
   to: string | string[];
   subject: string;
   htmlBody: string;
   attachments?: Attachment[];
 }
 
-interface Attachment {
+export interface Attachment {
   fileName: string;
   path: string;
 }
@@ -41,7 +41,7 @@ export class EmailService {
   }
 
   sendEmailWithFileSystemLogs(to: string | string[]) {
-    const subject = "Losgs del servidor";
+    const subject = "Logs del servidor";
     const htmlBody = `
     <h3>Logs del sistema</h3>
     <p>Mensaje de prueba</p>
