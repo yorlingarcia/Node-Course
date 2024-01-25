@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 const toDos = [
   { id: 1, text: "Buy milk", createdAt: new Date() },
-  { id: 2, text: "Buy tea", createdAt: new Date() },
+  { id: 2, text: "Buy tea", createdAt: null },
   { id: 3, text: "Buy coffe", createdAt: new Date() },
 ];
 export class TodosController {
@@ -24,7 +24,15 @@ export class TodosController {
   };
 
   public createToDo = (req: Request, res: Response) => {
-    const body = req.body;
-    res.json({ message: "Create toDo!", body: body });
+    const { text } = req.body;
+    if (!text)
+      return res.status(400).json({ Error: "Text property is required" });
+    const newToDo = {
+      id: toDos.length + 1,
+      text: text,
+      createdAt: null,
+    };
+    toDos.push(newToDo);
+    res.json(newToDo);
   };
 }
