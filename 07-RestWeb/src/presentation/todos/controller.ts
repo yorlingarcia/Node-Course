@@ -10,16 +10,21 @@ export class TodosController {
   //* DI
   constructor() {}
 
-  public getTodos = (req: Request, res: Response) => {
+  public getTodos = async (req: Request, res: Response) => {
+    const toDos = await prisma.toDo.findMany();
     res.json(toDos);
   };
 
-  public getToDoById = (req: Request, res: Response) => {
+  public getToDoById = async (req: Request, res: Response) => {
     const id = +req.params.id;
     if (isNaN(id))
       return res.status(400).json({ error: `ID argument is not a number` });
-    const toDo = toDos.find((todo) => todo.id === id);
-    toDo
+    const toDo = await prisma.toDo.findMany({
+      where: {
+        id,
+      },
+    });
+    toDo.length > 0
       ? res.json(toDo)
       : res.status(404).json({ error: `ToDo with id ${id} not found` });
   };
