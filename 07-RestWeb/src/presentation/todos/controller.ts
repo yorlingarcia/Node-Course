@@ -19,12 +19,14 @@ export class TodosController {
     const id = +req.params.id;
     if (isNaN(id))
       return res.status(400).json({ error: `ID argument is not a number` });
-    const toDo = await prisma.toDo.findMany({
+    const toDo = await prisma.toDo.findUnique({
       where: {
         id,
       },
     });
-    toDo.length > 0
+    console.log(toDo);
+
+    toDo
       ? res.json(toDo)
       : res.status(404).json({ error: `ToDo with id ${id} not found` });
   };
