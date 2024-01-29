@@ -14,58 +14,31 @@ export class TodosController {
 
   public getToDoById = async (req: Request, res: Response) => {
     const id = +req.params.id;
-    if (isNaN(id))
-      return res.status(400).json({ error: `ID argument is not a number` });
-    const toDo = await prisma.toDo.findUnique({
-      where: {
-        id,
-      },
-    });
-
-    toDo
-      ? res.json(toDo)
-      : res.status(404).json({ error: `ToDo with id ${id} not found` });
+    try {
+      const toDo = await this.todoRepository.finById(id);
+      res.json(toDo);
+    } catch (error) {
+      res.status(400).json({ error });
+    }
   };
 
   public createToDo = async (req: Request, res: Response) => {
     const [error, createTodoDto] = CreateTodoDto.create(req.body);
-
     if (error) return res.status(400).json({ error });
-
-    const toDo = await prisma.toDo.create({
-      data: createTodoDto!,
-    });
-
+    const toDo = await this.todoRepository.create(createTodoDto!);
     res.json(toDo);
   };
 
   public updateToDo = async (req: Request, res: Response) => {
     const id = +req.params.id;
     const [error, updateTodoDto] = UpdateTodoDto.create({ ...req.body, id });
-    try {
-      const toDo = await prisma.toDo.update({
-        where: { id },
-        data: updateTodoDto!.values,
-      });
-      res.json(toDo);
-    } catch (err) {
-      res.status(404).json({ error });
-    }
+    const updatedTodo = await this.todoRepository.updateById(updateTodoDto!);
+    return res.json(updatedTodo);
   };
 
   public deleteToDo = async (req: Request, res: Response) => {
     const id = +req.params.id;
-    if (isNaN(id))
-      return res.status(400).json({ error: `ID argument is not a number` });
-    try {
-      const toDoDelete = await prisma.toDo.delete({
-        where: {
-          id,
-        },
-      });
-      res.json({ Message: "ToDo eliminado correctamente!", toDoDelete });
-    } catch (error) {
-      res.status(404).json({ error: `ToDo with id ${id} not found` });
-    }
+    const deletedTodo = await this.todoRepository.deleteById(id)
+    res.json(deletedTodo)
   };
 }
