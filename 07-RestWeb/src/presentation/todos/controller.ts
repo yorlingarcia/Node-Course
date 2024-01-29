@@ -1,15 +1,17 @@
 import { Request, Response } from "express";
 import { prisma } from "../../data/postgres";
 import { CreateTodoDto, UpdateTodoDto } from "../../domain/dtos";
-import { TodoRepository } from "../../domain";
+import { GetTodos, TodoRepository } from "../../domain";
 
 export class TodosController {
   //* DI
   constructor(private readonly todoRepository: TodoRepository) {}
 
   public getToDos = async (req: Request, res: Response) => {
-    const toDos = await this.todoRepository.getAll();
-    return res.json(toDos);
+    new GetTodos(this.todoRepository)
+      .execute()
+      .then((todos) => res.json(todos))
+      .catch((error) => res.status(400).json({ error }));
   };
 
   public getToDoById = async (req: Request, res: Response) => {
@@ -38,7 +40,7 @@ export class TodosController {
 
   public deleteToDo = async (req: Request, res: Response) => {
     const id = +req.params.id;
-    const deletedTodo = await this.todoRepository.deleteById(id)
-    res.json(deletedTodo)
+    const deletedTodo = await this.todoRepository.deleteById(id);
+    res.json(deletedTodo);
   };
 }
