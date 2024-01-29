@@ -8,7 +8,7 @@ export class TodosController {
   constructor(private readonly todoRepository: TodoRepository) {}
 
   public getToDos = async (req: Request, res: Response) => {
-    const toDos = await prisma.toDo.findMany();
+    const toDos = await this.todoRepository.getAll();
     return res.json(toDos);
   };
 
