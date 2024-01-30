@@ -33,7 +33,7 @@ export class TodosController {
     if (error) return res.status(400).json({ error });
     new CreteTodo(this.todoRepository)
       .execute(createTodoDto!)
-      .then((todo) => res.json(todo))
+      .then((todo) => res.status(201).json(todo))
       .catch((error) => res.status(400).json({ error }));
   };
 
