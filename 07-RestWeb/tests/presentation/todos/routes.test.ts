@@ -131,4 +131,20 @@ describe("Todo route testing", () => {
       completedAt: "2023-10-21T00:00:00.000Z",
     });
   });
+
+  test("Should delete a Todo api/todos/:id", async () => {
+    const todo = await prisma.toDo.create({ data: todo1 });
+
+    const { body } = await request(testServer.app)
+      .delete(`/api/todos/${todo.id}`)
+      .expect(200);
+    expect(body).toEqual({ id: todo.id, text: todo.text, completedAt: null });
+  });
+
+  test("Should return 400 if TODO do not exist api/todos/:id", async () => {
+    const { body } = await request(testServer.app)
+      .delete("/api/todos/999")
+      .expect(400);
+    expect(body).toEqual({ error: "Todo with id 999 not found" });
+  });
 });
