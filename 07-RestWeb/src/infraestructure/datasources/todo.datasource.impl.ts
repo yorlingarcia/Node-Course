@@ -5,6 +5,7 @@ import {
   TodoEntity,
   UpdateTodoDto,
 } from "../../domain";
+import { CustomErrors } from "../../domain/errors/custom.error";
 
 export class TodoDatasourceImpl implements TodoDatasource {
   async create(createTodoDto: CreateTodoDto): Promise<TodoEntity> {
@@ -24,7 +25,7 @@ export class TodoDatasourceImpl implements TodoDatasource {
         id,
       },
     });
-    if (!toDo) throw `Todo with id ${id} not found`;
+    if (!toDo) throw new CustomErrors(`Todo with id ${id} not found`, 404);
     return TodoEntity.fromObject(toDo);
   }
   async updateById(updateTodoDto: UpdateTodoDto): Promise<TodoEntity> {

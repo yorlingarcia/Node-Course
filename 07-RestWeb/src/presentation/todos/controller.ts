@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { CreateTodoDto, UpdateTodoDto } from "../../domain/dtos";
+import { CustomErrors } from "../../domain/errors/custom.error";
 import {
   CreteTodo,
   DeleteTodo,
@@ -25,7 +26,11 @@ export class TodosController {
     new GetTodo(this.todoRepository)
       .execute(id)
       .then((todo) => res.json(todo))
-      .catch((error) => res.status(400).json({ error }));
+      .catch((error: CustomErrors) =>
+        res.status(error.statusCode).json({
+          error: error.message,
+        })
+      );
   };
 
   public createToDo = (req: Request, res: Response) => {
