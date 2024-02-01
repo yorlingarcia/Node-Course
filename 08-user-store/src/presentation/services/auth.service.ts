@@ -1,7 +1,8 @@
 import { Response } from "express";
 import { UserModel } from "../../data";
-import { CustomError } from "../../domain";
+import { CustomError, UserEntity } from "../../domain";
 import { RegisterUserDto } from "../../domain/dtos/auth/register-user.dto";
+import { bcryptAdapter } from "../../config";
 
 export class AuthService {
   constructor() {}
@@ -12,8 +13,18 @@ export class AuthService {
 
     try {
       const user = new UserModel(registerUserDto);
+
+      // Encriptar password
+      user.password = bcryptAdapter.hash(registerUserDto.password);
+
       await user.save();
-      return user;
+
+      const { password, ...userEntity } = UserEntity.fromObject(user);
+
+      return {
+        user: userEntity,
+        token: "ABC",
+      };
     } catch (error) {
       throw CustomError.internalServer(`${error}`);
     }

@@ -1,6 +1,6 @@
 import { CustomError } from "../errors/custom.error";
 
-export class Userentity {
+export class UserEntity {
   constructor(
     public readonly id: string,
     public readonly name: string,
@@ -24,7 +24,7 @@ export class Userentity {
     if (!password) throw CustomError.badRequest("Missing password");
     if (!role) throw CustomError.badRequest("Missing role");
 
-    return new Userentity(
+    return new UserEntity(
       _id || id,
       name,
       email,
