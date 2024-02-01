@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { RegisterUserDto } from "../../domain/dtos/auth/register-user.dto";
 import { AuthService } from "../services/auth.service";
-import { CustomError } from "../../domain";
+import { CustomError, LoginUserDto } from "../../domain";
 
 export class AuthController {
   constructor(public readonly autService: AuthService) {}
@@ -10,14 +10,14 @@ export class AuthController {
     if (error instanceof CustomError) {
       return res.status(error.statusCode).json({ error: error.message });
     }
-    console.log({ error });
+    console.log(`${error}`);
 
     return res.status(500).json({ error: "Internal server error" });
   };
 
   registerUser = (req: Request, res: Response) => {
     const [error, registerUserDto] = RegisterUserDto.create(req.body);
-    if (error) res.status(400).json({ error });
+    if (error) return res.status(400).json({ error });
     this.autService
       .registerUser(registerUserDto!)
       .then((user) => res.json(user))
@@ -25,7 +25,13 @@ export class AuthController {
   };
 
   loginUser = (req: Request, res: Response) => {
-    res.json("LoginUser");
+    const [error, loginUserDto] = LoginUserDto.create(req.body);
+
+    if (error) return res.status(400).json({ error });
+    this.autService
+      .loginUser(loginUserDto!)
+      .then((user) => res.json(user))
+      .catch((error) => this.handleError(error, res));
   };
 
   validateEmail = (req: Request, res: Response) => {
