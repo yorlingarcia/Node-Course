@@ -12,7 +12,6 @@ export class RegisterUserDto {
 
     if (!name) return ["Missing name", undefined];
     if (!email) return ["Missing email", undefined];
-    if (!email) return ["Missing email", undefined];
     if (!regularExps.email.test(email))
       return ["Email is not valid", undefined];
     if (!password) return ["Missing password", undefined];
