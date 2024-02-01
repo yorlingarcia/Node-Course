@@ -2,7 +2,7 @@ import { Response } from "express";
 import { UserModel } from "../../data";
 import { CustomError, LoginUserDto, UserEntity } from "../../domain";
 import { RegisterUserDto } from "../../domain/dtos/auth/register-user.dto";
-import { bcryptAdapter } from "../../config";
+import { JwtAdapter, bcryptAdapter } from "../../config";
 
 export class AuthService {
   constructor() {}
@@ -44,10 +44,15 @@ export class AuthService {
 
     try {
       const { password, ...userEntity } = UserEntity.fromObject(existUser);
+      const token = await JwtAdapter.generateToken({
+        id: userEntity.id,
+        email: userEntity.email,
+      });
+      if (!token) throw CustomError.internalServer("Error while creating JWT");
 
       return {
         user: userEntity,
-        token: "ABC",
+        token,
       };
     } catch (error) {
       throw CustomError.internalServer(`${error}`);
