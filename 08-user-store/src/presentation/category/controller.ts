@@ -1,4 +1,4 @@
-import { CustomError } from "../../domain";
+import { CreateCategoryDto, CustomError } from "../../domain";
 import { Request, Response } from "express";
 
 export class CategoryController {
@@ -14,7 +14,9 @@ export class CategoryController {
   };
 
   creteCategory = async (req: Request, res: Response) => {
-    res.json("Create Category");
+    const [error, createCategoryDto] = CreateCategoryDto.create(req.body);
+    if (error) res.status(400).json({ error });
+    res.json(createCategoryDto);
   };
 
   getCategories = async (req: Request, res: Response) => {
