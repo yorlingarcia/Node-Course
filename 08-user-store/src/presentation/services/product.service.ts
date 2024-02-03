@@ -33,17 +33,17 @@ export class ProductService {
         ProductModel.countDocuments(),
         ProductModel.find()
           .skip((page - 1) * limit)
-          .limit(limit),
+          .limit(limit)
+          .populate("user")
+          .populate("category"),
       ]);
       return {
         page,
         limit,
         total,
-        next: `/api/categories?page=${page + 1}&limit=${limit}`,
+        next: `/api/products?page=${page + 1}&limit=${limit}`,
         prev:
-          page - 1 > 0
-            ? `/api/categories?page=${page - 1}&limit=${limit}`
-            : null,
+          page - 1 > 0 ? `/api/products?page=${page - 1}&limit=${limit}` : null,
         products,
       };
     } catch (error) {

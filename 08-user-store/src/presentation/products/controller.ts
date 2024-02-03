@@ -33,7 +33,7 @@ export class ProductController {
 
     this.productService
       .getProducts(paginationDto!)
-      .then((categories) => res.json(categories))
+      .then((products) => res.json(products))
       .catch((error) => this.handleError(error, res));
   };
 }
