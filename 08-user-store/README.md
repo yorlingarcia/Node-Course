@@ -1,6 +1,6 @@
 # Rest Project + TypeScript
 
-Este proyecto previamente inicializado tiene todo lo necesario para trabajar con TypeScript, Express y Rest.
+Este proyecto previamente inicializado tiene todo lo necesario para trabajar con TypeScript, Express y Rest. La aplicacion se encarga de crear rutas CRUD para la creacion de productos, usuarios y su autenticacion
 
 Cada paso de su configuración ya se ha realizado previamente en el curso, por lo que solo es necesario clonar el proyecto y comenzar a trabajar.
 
