@@ -4,30 +4,89 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      #messages {
+        display: flex;
+        width: 60%;
+        height: auto;
+        margin: 15px auto;
+        list-style-type: none;
+        flex-direction: column;
+        padding: 20px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+
+      #messages li {
+        margin-bottom: 10px;
+        padding: 12px;
+        border-radius: 10px;
+        word-wrap: break-word;
+      }
+
+      #server {
+        color: green;
+        align-self: flex-end;
+        background-color: #dfffd8; /* Color de fondo para mensajes del servidor */
+      }
+
+      #client {
+        color: blue;
+        align-self: flex-start;
+        background-color: #cfe7fd; /* Color de fondo para mensajes del cliente */
+      }
+
+      #message-form {
+        display: flex;
+        width: 60%;
+        margin: 15px auto;
+      }
+
+      #message-input {
+        flex: 1;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 10px 0 0 10px;
+      }
+
+      #send-button {
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 0 10px 10px 0;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    <h1>Websockets - Status</h1>
-
-    <form action="">
-      <input type="text" name="" id="" placeholder="Enviar mensaje" />
-      <button>Enviar</button>
-    </form>
+    <div style="display: flex; justify-content: center">
+      <h1 style="margin: 0 auto">Websockets - <small>Status</small></h1>
+    </div>
 
     <ul id="messages"></ul>
 
+    <form id="message-form" action="">
+      <input type="text" id="message-input" placeholder="Enviar mensaje" />
+      <button id="send-button">Enviar</button>
+    </form>
+
     <script>
-      const socket = new WebSocket("ws://localhost:3000");
+      let socket = null;
 
       const form = document.querySelector("form");
       const input = document.querySelector("input");
       const messagesElem = document.getElementById("messages");
+      const statusElem = document.querySelector("small");
 
       function sendmessage(message) {
-        socket.send(message);
+        socket?.send(message);
       }
 
-      function renderMessage(message) {
+      function renderMessage(message, user) {
         const li = document.createElement("li");
+        li.setAttribute("id", user);
         li.innerHTML = message;
         messagesElem.prepend(li);
       }
@@ -36,19 +95,31 @@
         event.preventDefault();
         const messsage = input.value;
         sendmessage(messsage);
+        input.value = null;
+        renderMessage(messsage, "client");
       });
-      socket.onopen = (event) => {
-        console.log("Connected!");
-      };
 
-      socket.onclose = (event) => {
-        console.log("Disconnected!");
-      };
+      function connectToServer() {
+        socket = new WebSocket("ws://localhost:3000");
 
-      socket.onmessage = (event) => {
-        const { data } = JSON.parse(event.data);
-        renderMessage(data);
-      };
+        socket.onopen = (event) => {
+          statusElem.innerText = "Online";
+        };
+
+        socket.onclose = (event) => {
+          statusElem.innerText = "Offline";
+          setTimeout(() => {
+            connectToServer();
+          }, 1500);
+        };
+
+        socket.onmessage = (event) => {
+          const { data } = JSON.parse(event.data);
+          renderMessage(data, "server");
+        };
+      }
+
+      connectToServer();
     </script>
   </body>
 </html>
