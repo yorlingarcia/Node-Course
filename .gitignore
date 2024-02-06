@@ -39,3 +39,5 @@ dist/
 coverage/
 *.log
 .env
+# Local Netlify folder
+.netlify
