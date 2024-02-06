@@ -10,13 +10,21 @@ wss.on("connection", function connection(ws) {
   ws.on("message", function message(data) {
     const payload = {
       type: "Custom-Type",
-      data: data.toString().toUpperCase(),
+      data: data.toString(),
     };
     // ws.send(JSON.stringify(payload));
+    const dataString = JSON.stringify(payload);
+    //todos Incluyente
+    // wss.clients.forEach(function each(client) {
+    //   if (client.readyState === WebSocket.OPEN) {
+    //     client.send(dataString, { binary: false });
+    //   }
+    // });
 
+    // todos Excluyente
     wss.clients.forEach(function each(client) {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(JSON.stringify(payload), { binary: false });
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(dataString, { binary: false });
       }
     });
   });
