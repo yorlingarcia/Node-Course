@@ -1,8 +1,9 @@
 import { UuidAdapter } from "../../config/uuid.adapter";
 import { Ticket } from "../../domain/interfaces/ticket";
+import { WssService } from "./wss.service";
 
 export class TicketService {
-  public readonly tickets: Ticket[] = [
+  public tickets: Ticket[] = [
     { id: UuidAdapter.v4(), number: 1, createdAt: new Date(), done: false },
     { id: UuidAdapter.v4(), number: 2, createdAt: new Date(), done: false },
     { id: UuidAdapter.v4(), number: 3, createdAt: new Date(), done: false },
@@ -14,7 +15,7 @@ export class TicketService {
   ];
 
   private readonly workingOnTickets: Ticket[] = [];
-  constructor() {}
+  constructor(private readonly wssService = WssService.instance) {}
 
   public get pendingTickets(): Ticket[] {
     return this.tickets.filter((ticket) => !ticket.handleAtDesk);
@@ -40,6 +41,7 @@ export class TicketService {
     this.tickets.push(ticket);
 
     //Todo: ws
+    this.onTicketNumberChange();
     return ticket;
   }
 
@@ -52,7 +54,7 @@ export class TicketService {
     ticket.handleAt = new Date();
 
     this.workingOnTickets.unshift({ ...ticket });
-    //todo: ws
+    this.onTicketNumberChange();
     return { status: "Ok", ticket };
   }
 
@@ -62,12 +64,19 @@ export class TicketService {
     if (!ticket)
       return { status: "Error", message: `Ticket con id ${id} no encontrado` };
 
-    this.tickets.map((ticket) => {
+    this.tickets = this.tickets.map((ticket) => {
       if (ticket.id === id) {
         ticket.done = true;
       }
       return ticket;
     });
     return { status: "Ok" };
+  }
+
+  private onTicketNumberChange() {
+    this.wssService.sendMessage(
+      "on-ticket-count-changed",
+      this.pendingTickets.length
+    );
   }
 }
